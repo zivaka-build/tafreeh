@@ -1,0 +1,9 @@
+export const SAGA_ACTIONS={
+    HOME_CONTENT:'HOME_CONTENT/SAGA',
+    LOGIN:'LOGIN/SAGA'
+};
+
+export const ACTIONS={
+    HOME_PAGE_CONTENT:'HOME_PAGE_CONTENT',
+    LOGIN:'LOGIN'
+};

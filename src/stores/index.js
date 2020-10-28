@@ -5,12 +5,12 @@ import rootReducer from "./reducers/root.reducer";
 
 
 
-// let middlewares = [];
+let middlewares = [];
 
 const sagaMiddleware = createSagaMiddleware();
-// middlewares.push(sagaMiddleware);
+middlewares.push(sagaMiddleware);
 
-let middleware = applyMiddleware(sagaMiddleware);
+let middleware = applyMiddleware(...middlewares);
 
 // add the redux dev tools process.env.NODE_ENV !== 'production' &&
 if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {

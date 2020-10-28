@@ -8,14 +8,14 @@ export default function BannerStatistics(props){
                     <div className="col-md-6">
                         <div className="img-container mb-sm-30">
                             <a href="product-details.html">
-                                <img src="assets/images/banner-banner-1.jpg" alt="banner-image"/>
+                                <img src="assets/images/banner-banner-1.jpg" alt="banner_image"/>
                             </a>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="img-container mb-sm-30">
                             <a href="product-details.html">
-                                <img src="assets/images/banner-banner-2.jpg" alt="banner-image"/>
+                                <img src="assets/images/banner-banner-2.jpg" alt="banner_image"/>
                             </a>
                         </div>
                     </div>

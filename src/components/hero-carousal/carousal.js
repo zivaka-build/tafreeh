@@ -8,8 +8,8 @@ class Carousal extends React.Component {
             autoplay: false,
             fade: true,
             arrows: true,
-            prevArrow: '<button type="button" className="slick-prev"><i className="fa fa-angle-left"></i></button>',
-            nextArrow: '<button type="button" className="slick-next"><i className="fa fa-angle-right"></i></button>',
+            prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-angle-left"></i></button>',
+            nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right"></i></button>',
             responsive: [{
                 breakpoint: 768,
                 settings: {
@@ -18,21 +18,7 @@ class Carousal extends React.Component {
             }]
         });
     }
-    componentDidUpdate(){
-        // window.$('.hero-slider-active').slick({
-        //     autoplay: false,
-        //     fade: true,
-        //     arrows: true,
-        //     prevArrow: '<button type="button" className="slick-prev"><i className="fa fa-angle-left"></i></button>',
-        //     nextArrow: '<button type="button" className="slick-next"><i className="fa fa-angle-right"></i></button>',
-        //     responsive: [{
-        //         breakpoint: 768,
-        //         settings: {
-        //             arrows: false,
-        //         }
-        //     }]
-        // });
-    }
+    
     render() {
         return (
             <section className="hero-slider-area">
@@ -66,7 +52,7 @@ class Carousal extends React.Component {
                                         <a href="shop.html" className="btn">shop now</a>
                                     </div>
                                     <div className="slider-img">
-                                        <img src="assets/images/slider-slide_1.png" alt=""/></div>
+                                        <img src="assets/images/blog-blog2.png" alt=""/></div>
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { ACTIONS, SAGA_ACTIONS } from '../../common/config/actions';
 import { connect } from 'react-redux';
 import './header.css'
 import MainMenu from './header.menu';
+import { Link } from 'react-router-dom';
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -30,9 +30,9 @@ class Header extends React.Component {
                         <div className="row align-items-center">
                             <div className="col-lg-3">
                                 <div className="logo">
-                                    <a href="index.html">
+                                    <Link to="/">
                                         <h2>Tafreeh</h2>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="col-lg-9">
@@ -42,15 +42,15 @@ class Header extends React.Component {
                                             <ul className="d-flex justify-content-center">
                                                 <li>
                                                     <div className="dropdown header-top-dropdown">
-                                                        <a className="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
+                                                        <a href="#!" className="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
                                                             my account
                                                             <i className="fa fa-angle-down"></i>
                                                         </a>
                                                         <div className="dropdown-menu" aria-labelledby="myaccount">
-                                                            <a className="dropdown-item" href="my account.html">my profile</a>
-                                                            <a className="dropdown-item" href="login-register.html"> login</a>
-                                                            <a className="dropdown-item" href="login-register.html">register</a>
-                                                            <a className="dropdown-item" href="login-register.html">log out</a>
+                                                            <Link className="dropdown-item" to="/profile">my profile</Link>
+                                                            <Link className="dropdown-item" to="login-register"> login</Link>
+                                                            <Link className="dropdown-item" to="login-register">register</Link>
+                                                            <Link className="dropdown-item" to="login-register">log out</Link>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -99,7 +99,7 @@ class Header extends React.Component {
                                                     <span className="subtotal-price ml-auto">$110.00</span>
                                                 </li>
                                                 <li className="checkout-btn">
-                                                    <a href="cart.html">View Cart</a>
+                                                    <Link onClick={this.slideUp} to="/cart">View Cart</Link>
                                                 </li>
                                                 <li className="checkout-btn">
                                                     <a href="checkout.html">checkout</a>

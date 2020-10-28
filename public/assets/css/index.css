@@ -461,6 +461,159 @@ fieldset legend {
 	margin: inherit;
 }
 
-/* -------------------- */
+.single-input-item {
+	margin-top: 20px;
+}
+
+.single-input-item label {
+	color: #333333;
+	text-transform: capitalize;
+	font-size: 14px;
+}
+
+.single-input-item label.required:after {
+	content: '*';
+	color: red;
+	font-size: 14px;
+	margin-left: 3px;
+	margin-top: 5px;
+}
+
+.single-input-item input,
+.single-input-item textarea {
+	color: #666666;
+	border: 1px solid #ccc;
+	padding: 12px 10px;
+	width: 100%;
+	font-size: 14px;
+	background: #f7f7f7;
+}
+
+.single-input-item input:active,
+.single-input-item input:focus,
+.single-input-item textarea:active,
+.single-input-item textarea:focus {
+	border-color: #62d2a2;
+	background-color: #fff;
+}
+
+.single-input-item .nice-select {
+	width: 100%;
+	border-radius: 0;
+	height: 48px;
+	border-color: #ccc;
+	background-color: #f7f7f7;
+}
+
+.single-input-item .nice-select .current {
+	color: #666666;
+}
+
+.single-input-item .nice-select .list {
+	max-height: 200px;
+	overflow: auto;
+	width: 100%;
+}
+
+/*------- input box style css end -------*/
+/*-------- Custom Checkbox Style start --------*/
+.custom-checkbox label,
+.custom-checkbox .custom-control-label,
+.custom-radio label,
+.custom-radio .custom-control-label {
+	color: #333333;
+	font-size: 14px;
+	line-height: 1;
+	padding-left: 10px;
+	display: block;
+	cursor: pointer;
+}
+
+.custom-checkbox label:before,
+.custom-checkbox .custom-control-label:before,
+.custom-radio label:before,
+.custom-radio .custom-control-label:before {
+	background-color: #ddd;
+	border: 1px solid #ddd;
+	border-radius: 0;
+	height: 15px;
+	top: 0;
+	width: 15px;
+}
+
+.custom-checkbox label:after,
+.custom-checkbox .custom-control-label:after,
+.custom-radio label:after,
+.custom-radio .custom-control-label:after {
+	background-size: 10px 10px;
+	height: 15px;
+	top: 0;
+	width: 15px;
+}
+
+.custom-checkbox label a,
+.custom-checkbox .custom-control-label a,
+.custom-radio label a,
+.custom-radio .custom-control-label a {
+	color: #333333;
+	font-weight: 500;
+}
+
+.custom-checkbox label a:hover,
+.custom-checkbox .custom-control-label a:hover,
+.custom-radio label a:hover,
+.custom-radio .custom-control-label a:hover {
+	color: #62d2a2;
+}
+
+.custom-checkbox input,
+.custom-checkbox .custom-control-input,
+.custom-radio input,
+.custom-radio .custom-control-input {
+	outline: none;
+}
+
+.custom-checkbox input:focus~.custom-control-label:before,
+.custom-checkbox input:focus label:before,
+.custom-checkbox .custom-control-input:focus~.custom-control-label:before,
+.custom-checkbox .custom-control-input:focus label:before,
+.custom-radio input:focus~.custom-control-label:before,
+.custom-radio input:focus label:before,
+.custom-radio .custom-control-input:focus~.custom-control-label:before,
+.custom-radio .custom-control-input:focus label:before {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.custom-checkbox input:checked~.custom-control-label:before,
+.custom-checkbox input:checked label:before,
+.custom-checkbox .custom-control-input:checked~.custom-control-label:before,
+.custom-checkbox .custom-control-input:checked label:before,
+.custom-radio input:checked~.custom-control-label:before,
+.custom-radio input:checked label:before,
+.custom-radio .custom-control-input:checked~.custom-control-label:before,
+.custom-radio .custom-control-input:checked label:before {
+	background-color: #62d2a2;
+	border-color: #62d2a2;
+}
+
+/*-------- Custom Checkbox Style end --------*/
+/*------- Custom Radio Button Style start -------*/
+.custom-radio label:before,
+.custom-radio .custom-control-label:before {
+	border-radius: 50%;
+	height: 14px;
+	width: 14px;
+}
+
+.custom-radio label::after,
+.custom-radio .custom-control-label::after {
+	background-position: 1px 1px;
+	background-size: 9px 8px;
+	left: -22px;
+	top: 2px;
+	height: 10px;
+	width: 10px;
+}
 
 

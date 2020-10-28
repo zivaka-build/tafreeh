@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import "./product.css";
 export default function MiniProduct(props) {
     return (
@@ -7,8 +8,8 @@ export default function MiniProduct(props) {
                 <a href="product-details.html">
                     <img src={props.product.img} alt="" /></a>
                 <div className="quick-view-link">
-                    <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
-                    </a>
+                    <NavLink to="javascript:void(0);" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
+                    </NavLink>
                 </div>
             </div>
             <div className="product-description">

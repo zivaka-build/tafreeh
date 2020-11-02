@@ -10,6 +10,7 @@ import Cart from './components/pages/cart/cart';
 import UserLoginRegister from './components/pages/user-login-register/user-login-register';
 import ProductDetails from './components/pages/productDetails/product.details';
 import AboutUs from './components/pages/about/about.us';
+import Shop from './components/pages/shop/shop';
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
           <Route path="/product_details" component={ProductDetails}/>
           <Route path="/about" component={AboutUs}/>
           <Route path="/login-register" component={UserLoginRegister}/>
+          <Route path="/shop" component={Shop}/>
         </Switch>
         <Footer/>
       </Router>

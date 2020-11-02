@@ -15,13 +15,13 @@
 	visibility: visible;
 }
 
-.product-item:hover .product-action-link a:first-child {
+/* .product-item:hover .product-action-link a:first-child {
 	right: 130px;
 }
 
 .product-item:hover .product-action-link a:last-child {
 	left: 130px;
-}
+} */
 
 .product-item:hover .quick-view-link a {
 	opacity: 1;

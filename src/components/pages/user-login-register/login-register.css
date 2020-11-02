@@ -2,7 +2,7 @@
     background: #c1bdba;
     font-family: 'Poppins', sans-serif;
   }
-a {
+/* a {
     text-decoration: none;
     color: #1ab188;
     -webkit-transition: .5s ease;
@@ -10,7 +10,7 @@ a {
   }
   a:hover {
     color: #179b77;
-  }
+  } */
 .form {
     background: rgba(19, 35, 47, 0.9);
     padding: 40px;

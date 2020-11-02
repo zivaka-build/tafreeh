@@ -28,7 +28,7 @@ export default function MainMenu(){
                                 <ul>
                                     <li><Link to="/">Home</Link></li>
                                     <li><NavLink to="/about">About Us</NavLink></li>
-                                    <li><a href="shop.html">shop</a></li>
+                                    <li><NavLink to="/shop">shop</NavLink></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="contact us.html">Contact</a></li>
                                 </ul>

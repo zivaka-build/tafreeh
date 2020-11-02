@@ -9,7 +9,7 @@ function AccountDetails(props) {
     const subnitForm=(values)=>{
         props.dispatch({
             type:SAGA_ACTIONS.LOGIN,
-            payload:values
+            payload:{lang:'en'}
         });
     }
     
@@ -87,7 +87,7 @@ function AccountDetails(props) {
                                             null
                                         }
                                     </select>
-                                    {errors.state && <span>{errors.state.message}</span>}
+                                    {errors.state && <span className="select-error">{errors.state.message}</span>}
                                 </div>
                             </div>
                                                     

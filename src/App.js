@@ -8,6 +8,8 @@ import HomePage from './components/pages/home/home';
 import Profile from './components/pages/profile/profile';
 import Cart from './components/pages/cart/cart';
 import UserLoginRegister from './components/pages/user-login-register/user-login-register';
+import ProductDetails from './components/pages/productDetails/product.details';
+import AboutUs from './components/pages/about/about.us';
 function App() {
   return (
     <div className="App">
@@ -20,7 +22,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage}/>
           <Route path="/profile" component={Profile}/>
-          <Route path="/cart" component={Cart}/>
+          {/* <Route path="/cart" component={Cart}/> */}
+          <Route path="/product_details" component={ProductDetails}/>
+          <Route path="/about" component={AboutUs}/>
           <Route path="/login-register" component={UserLoginRegister}/>
         </Switch>
         <Footer/>

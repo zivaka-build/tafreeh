@@ -1,0 +1,244 @@
+/*------- Start About Page Wrapper --------*/
+.about-text-wrap {
+	font-size: 16px;
+	line-height: 28px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px),
+only screen and (max-width: 767.98px) {
+	.about-text-wrap {
+		margin-bottom: 30px;
+	}
+}
+
+.about-text-wrap h2 {
+	color: #333333;
+	font-size: 36px;
+	line-height: 1.2;
+	font-weight: 800;
+	margin-bottom: 15px;
+	text-transform: capitalize;
+	font-family: 'Poppins', sans-serif;
+}
+
+@media only screen and (max-width: 575.98px) {
+	.about-text-wrap h2 {
+		font-size: 24px;
+		margin-bottom: 8px;
+	}
+}
+
+.about-text-wrap h2 span {
+	color: #666666;
+	display: block;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	margin-top: -4px;
+}
+
+.about-image-wrap {
+	position: relative;
+	padding-left: 30px;
+	padding-top: 30px;
+}
+
+.about-image-wrap:after {
+	border: 5px solid #62d2a2;
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: calc(100% - 30px);
+	width: calc(100% - 30px);
+	z-index: -1;
+}
+
+/*------- end About Page Wrapper --------*/
+
+/*------- team area start -------*/
+.team-member {
+	-webkit-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.team-member .team-thumb {
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+
+.team-member .team-thumb .team-social {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px 0;
+	position: absolute;
+	background-color: #fff;
+	-webkit-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+	transform: translateY(100%);
+	-webkit-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.team-member .team-thumb .team-social a {
+	color: #333333;
+	width: 30px;
+	height: 30px;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	line-height: 35px;
+	background-color: #f5f5f5;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+
+.team-member .team-thumb .team-social a:hover {
+	color: #fff;
+	background-color: #62d2a2;
+	border-color: #62d2a2;
+}
+
+.team-member .team-content {
+	padding: 5px;
+}
+
+.team-member .team-content h3 {
+	color: #333333;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 28px;
+	padding-top: 15px;
+	text-transform: capitalize;
+}
+
+.team-member .team-content h6 {
+	font-size: 14px;
+	color: #62d2a2;
+	line-height: 20px;
+	text-transform: capitalize;
+}
+
+.team-member .team-content p {
+	padding-top: 10px;
+}
+
+.team-member:hover .team-social {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+}
+
+.team-member:hover .team-thumb img {
+	opacity: 0.5;
+}
+
+/*------- team area end -------*/
+.testimonial-area {
+	background-size: cover;
+	background-position: center center;
+}
+
+/*------- why choose us area -------*/
+.choose-us-wrapper .card {
+	border: none;
+	margin-bottom: 30px;
+}
+
+.choose-us-wrapper .card:last-child {
+	margin-bottom: 0;
+}
+
+.card-header {
+	padding: 0;
+	border: none;
+}
+
+.card-header button {
+	color: #333333;
+	font-size: 16px;
+	font-weight: 600;
+	width: 100%;
+	line-height: 1.2;
+	padding: 16px 30px;
+	text-align: left;
+	text-transform: capitalize;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: #fff;
+	position: relative;
+}
+
+@media only screen and (max-width: 479.98px) {
+	.card-header button {
+		padding: 12px 10px;
+	}
+}
+
+.card-header button i {
+	color: #62d2a2;
+	font-size: 20px;
+	padding-right: 10px;
+}
+
+.card-header button:before {
+	top: 50%;
+	right: 20px;
+	content: "\f107";
+	position: absolute;
+	font-family: 'Poppins', sans-serif;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 479.98px) {
+	.card-header button:before {
+		right: 10px;
+	}
+}
+
+.choose-us-wrapper .card-header .accordio-heading[aria-expanded="true"] {
+	color: #fff;
+	background-color: #62d2a2;
+}
+
+.choose-us-wrapper .card-header .accordio-heading[aria-expanded="true"] i {
+	color: #fff;
+}
+
+.choose-us-wrapper .card-header .accordio-heading[aria-expanded="true"]:before {
+	content: "\f106";
+}
+.single-choose-item i {
+	color: #969ca7;
+	font-size: 44px;
+	-webkit-transition: 0.4s;
+	-o-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.single-choose-item h4 {
+	color: #333333;
+	font-size: 18px;
+	font-weight: 700;
+	padding: 15px 0 10px;
+	text-transform: uppercase;
+}
+
+.single-choose-item:hover i {
+	color: #62d2a2;
+}
+/*------- why choose us start -------*/

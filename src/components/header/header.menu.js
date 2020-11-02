@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import { Link} from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
 import "../header/header.css";
 export default function MainMenu(){
     useEffect(()=>{
@@ -16,7 +16,7 @@ export default function MainMenu(){
             meanMenuContainer: '.mobile-menu',
             meanScreenWidth: "991"
         });
-    })
+    },[])
     return(
         <div className="main-menu-area sticky">
             <div className="container">
@@ -27,7 +27,7 @@ export default function MainMenu(){
                             <nav id="mobile-menu">
                                 <ul>
                                     <li><Link to="/">Home</Link></li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><NavLink to="/about">About Us</NavLink></li>
                                     <li><a href="shop.html">shop</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="contact us.html">Contact</a></li>

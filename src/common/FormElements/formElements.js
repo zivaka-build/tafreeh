@@ -1,6 +1,5 @@
 import React from 'react'
 export const Input =  ({ register,error, ...rest }) => {
-  console.log("Error",error);
   return(
     <>
       <input

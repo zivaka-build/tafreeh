@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './header.css'
 import MainMenu from './header.menu';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import { ACTIONS } from '../../common/config/actions';
+import Cookies from 'js-cookie';
+import { STORAGE } from '../../common/constants/storageConstants';
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -21,6 +24,16 @@ class Header extends React.Component {
         window.$('.dropdown').on('hide.bs.dropdown', function (e) {
             window.$(this).find('.dropdown-menu').first().stop(true, true).slideUp(500);
         });
+    }
+
+    logout=()=>{
+        Cookies.remove(STORAGE.AUTH_TOKEN);
+        Cookies.remove(STORAGE.CURRENT_USER_EMAIL);
+        this.props.dispatch({
+            type:ACTIONS.LOGOUT
+        });
+        
+        window.location.href=`${window.location.origin}/login-register`;
     }
     render() {
         return (
@@ -43,14 +56,22 @@ class Header extends React.Component {
                                                 <li>
                                                     <div className="dropdown header-top-dropdown">
                                                         <a href="#!" className="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
-                                                            my account
+                                                            {this.props.isAuthenticated?`Hello ${this.props.user && (this.props.user.firstname)}`:'my account'}
                                                             <i className="fa fa-angle-down"></i>
                                                         </a>
                                                         <div className="dropdown-menu" aria-labelledby="myaccount">
-                                                            <Link className="dropdown-item" to="/profile">my profile</Link>
-                                                            <Link className="dropdown-item" to="login-register"> login</Link>
-                                                            <Link className="dropdown-item" to="login-register">register</Link>
-                                                            <Link className="dropdown-item" to="login-register">log out</Link>
+                                                            {
+                                                                this.props.isAuthenticated?
+                                                                <>
+                                                                    <Link className="dropdown-item" to="/profile">my profile</Link>
+                                                                    <a className="dropdown-item" style={{cursor:'pointer'}} href="#" onClick={this.logout}>log out</a>
+                                                                </>
+                                                                :
+                                                                <>
+                                                                    <Link className="dropdown-item" to="login-register"> login</Link>
+                                                                    <Link className="dropdown-item" to="login-register">register</Link>
+                                                                </>
+                                                            }    
                                                         </div>
                                                     </div>
                                                 </li>
@@ -120,7 +141,9 @@ class Header extends React.Component {
 }
 const mapStateToProps = state => {
     return {
-        user: state.user
+        ...state,
+        isAuthenticated:state.user.isAuthenticated,
+        user: state.user&& state.user.user?state.user.user:null,
     };
 };
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));

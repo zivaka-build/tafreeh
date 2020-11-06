@@ -1,0 +1,13 @@
+.backdrop{
+    position: absolute;
+    top: 47%;
+    left: 47%;
+}
+
+.backdrop-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+    background: #2e2e2ed1;
+}

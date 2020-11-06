@@ -1,30 +1,97 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions as toastrActions } from 'react-redux-toastr';
+import { ACTIONS, SAGA_ACTIONS } from '../../../common/config/actions';
+import { STORAGE } from '../../../common/constants/storageConstants';
 import Breadcrumb from '../../breadcrumb/breadcrumb';
 import AccountDetails from './account.details.tab';
 import ChangePassword from './change.password';
 import OrderTab from './order.tab';
 import "./profile.css";
+import { updateUserPassword } from '../../../sagas/auth.saga';
 class Profile extends React.Component {
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
     }
-    baire=()=>{
-        this.props.history.push('/');
+    componentDidMount() {
+        this.toastr = bindActionCreators(toastrActions, this.props.dispatch);
+    }
+
+    showToaster(type, title, message) {
+        this.toastr.add({
+            type,
+            title,
+            position: 'top-left',
+            attention: true,
+            onAttentionClick: id => { },
+            message,
+            options: { showCloseButton: true },
+            showCloseButton: true,
+        });
+    }
+    updateUser = values => {
+        return new Promise((resolve, reject) => {
+            this.props.dispatch({
+                type: SAGA_ACTIONS.UPDATE_USER,
+                payload: {
+                    id: this.props.userDetails && this.props.userDetails._id ? this.props.userDetails._id : null,
+                    data: values
+                },
+                callbackSuccess: resp => {
+                    this.showToaster('success','Successful',resp.data.message);
+                    resolve(resp);
+                },
+                callbackError: error => {
+                    reject(error);
+                }
+            })
+        })
+    }
+
+    logout = () => {
+        Cookies.remove(STORAGE.AUTH_TOKEN);
+        Cookies.remove(STORAGE.CURRENT_USER_EMAIL);
+        this.props.dispatch({
+            type: ACTIONS.LOGOUT
+        });
+        this.props.history.push('/login-register');
+    }
+
+    updateUserPassword=values=>{
+        return new Promise((resolve, reject) => {
+            this.props.dispatch({
+                type: SAGA_ACTIONS.UPDATE_USER_PASSWORD,
+                payload: {
+                    id: this.props.userDetails && this.props.userDetails._id ? this.props.userDetails._id : null,
+                    data: {
+                        oldpassword:values.oldpassword,
+                        newpassword:values.newpassword
+                    }
+                },
+                callbackSuccess: resp => {
+                    this.showToaster('success','Successful',resp.data.message);
+                    resolve(resp);
+                },
+                callbackError: error => {
+                    reject(error);
+                }
+            })
+        })
     }
     render() {
-        let tabs=[
-            
+        let tabs = [
+
             {
-                name:"Orders",icon:"fa fa-cart-arrow-down",path:'#orders'
+                name: "Orders", icon: "fa fa-cart-arrow-down", path: '#orders'
             },
-            
+
             {
-                name:"Account Details",icon:"fa fa-user",path:"#account-info"
+                name: "Account Details", icon: "fa fa-user", path: "#account-info"
             },
             {
-                name:"Change Password",path:"#change-password",icon:"fa fa-lock"
+                name: "Change Password", path: "#change-password", icon: "fa fa-lock"
             },
         ]
         return (
@@ -44,19 +111,19 @@ class Profile extends React.Component {
                                         <div className="col-lg-3 col-md-4">
                                             <div className="myaccount-tab-menu nav" role="tablist">
                                                 {
-                                                    tabs && tabs.length?
-                                                    tabs.map((tab,index)=>{
-                                                        return(
-                                                            <a key={index} href={tab.path} className={index===0 ? "active":null} data-toggle="tab"><i className={tab.icon}></i>
-                                                                {tab.name}
-                                                            </a>
-                                                        )
-                                                        
-                                                    })
-                                                    :
-                                                    null
+                                                    tabs && tabs.length ?
+                                                        tabs.map((tab, index) => {
+                                                            return (
+                                                                <a key={index} href={tab.path} className={index === 0 ? "active" : null} data-toggle="tab"><i className={tab.icon}></i>
+                                                                    {tab.name}
+                                                                </a>
+                                                            )
+
+                                                        })
+                                                        :
+                                                        null
                                                 }
-                                                <Link to="/login-register"><i className="fa fa-sign-out"></i> Logout</Link>
+                                                <a href="#" onClick={this.logout}><i className="fa fa-sign-out"></i> Logout</a>
                                             </div>
                                         </div>
                                         {/* <!-- My Account Tab Menu End --> */}
@@ -64,17 +131,20 @@ class Profile extends React.Component {
                                         {/* <!-- My Account Tab Content Start --> */}
                                         <div className="col-lg-9 col-md-8">
                                             <div className="tab-content" id="myaccountContent">
-                                                
+
                                                 {/* <!-- Order Tab Component Start --> */}
-                                                <OrderTab/>
+                                                <OrderTab />
                                                 {/* <!-- Order Tab Component End --> */}
 
                                                 {/* <!-- account details Tab Content Start --> */}
-                                                <AccountDetails submitted={()=>this.baire}/>
+                                                <AccountDetails
+                                                    user={this.props.userDetails}
+                                                    updateUser={this.updateUser}
+                                                />
                                                 {/* <!-- account details Tab Content End --> */}
 
                                                 {/* change password tab */}
-                                                <ChangePassword/>
+                                                <ChangePassword updatePassword={this.updateUserPassword}/>
                                                 {/* change password tab ends */}
                                             </div>
                                         </div>
@@ -91,4 +161,9 @@ class Profile extends React.Component {
 
     }
 }
-export default Profile;
+const mapStateToProps = state => {
+    return {
+        userDetails: state.user && state.user.user ? state.user.user : {},
+    }
+}
+export default connect(mapStateToProps)(Profile);

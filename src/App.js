@@ -15,6 +15,7 @@ import Shop from './components/pages/shop/shop';
 import requireAuth from './common/hoc/reqAuth';
 import requireNoAuth from './common/hoc/reqNoAuth';
 import Backdrop from './components/loaders/backdrop/backdrop';
+import ForgotPassword from './components/auth/forgotPassword/forgot.pass';
 class App extends React.Component {
   render() {
     return (
@@ -42,6 +43,7 @@ class App extends React.Component {
             <Route exact path="/" component={HomePage} />
             <Route path="/cart" component={Cart}/>
             <Route path="/login-register" component={UserLoginRegister} />
+            <Route path="/forgot_pwd" component={ForgotPassword} />
             <Route path="/product_details" component={ProductDetails} />
             <Route path="/about" component={AboutUs} />
             <Route path="/shop" component={Shop} />

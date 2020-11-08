@@ -1,6 +1,10 @@
 import React from 'react';
 import '../shop.css';
 class Sidebar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { selected: null };
+    }
     componentDidMount() {
         var categoryChildren = window.$('.sidebar-category li .children');
         categoryChildren.slideUp();
@@ -19,6 +23,37 @@ class Sidebar extends React.Component {
             }
         });
     }
+    componentWillReceiveProps(nextprops) {
+        console.log("pr", nextprops);
+
+        if (nextprops.filterItems && nextprops.filterItems.length) {
+            setTimeout(
+                () => {
+                    var categoryChildren = window.$('.sidebar-category li .children');
+                    categoryChildren.slideUp();
+                    categoryChildren.parents('li').addClass('has-children');
+                    window.$('.sidebar-category').on('click', 'li.has-children > a', function (e) {
+                        if (window.$(this).parent().hasClass('has-children')) {
+                            if (window.$(this).siblings('ul:visible').length > 0) { }
+                            else {
+                                window.$(this).parents('li').siblings('li').find('ul:visible').slideUp();
+                                window.$(this).siblings('ul').slideDown();
+                            }
+                        }
+                        if (window.$(this).attr('href') === '#') {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                },500
+            )
+
+        }
+    }
+
+    selectedCat = id => {
+        this.setState({ selected: id });
+    }
     render() {
         return (
             <div className="sidebar-wrapper mt-md-60 mt-sm-60">
@@ -29,45 +64,31 @@ class Sidebar extends React.Component {
                     </div>
                     <div className="sidebar-body">
                         <ul className="sidebar-category">
-                            <li><a href="#">classNameic</a>
-                                <ul className="children">
-                                    <li><a href="javaScript:void(0)">classNameic Summer Black Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Mouling Special Autumn Green Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Margaret's Hope classNameic Summer Chinary Black Tea</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Special</a>
-                                <ul className="children">
-                                    <li><a href="javaScript:void(0)">Assam Breakfast Black Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Castleton Special Spring Chinary Black Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Mouling Special Autumn Green Tea</a></li>
-                                    <li><a href="javaScript:void(0)"> Seeyok Special Summer Muscatel Black Tea</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Exotic</a>
-                                <ul className="children">
-                                    <li><a href="javaScript:void(0)">Mouling Special Autumn Green Tea</a></li>
-                                    <li><a href="javaScript:void(0)"> Castleton Exotic Summer Muscatel Black Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Saffron (Kesar) Rose Chai</a></li>
-                                    <li><a href="javaScript:void(0)"> Hibiscus Lemongrass Tisane</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Organic</a>
-                                <ul className="children">
-                                    <li><a href="javaScript:void(0)">Risheehat classNameic Summer Black Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Mouling Special Autumn Green Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Selim Hill classNameic Spring Green Tea</a></li>
-                                    <li><a href="#">Temi Summer Muscatel Black Tea</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Alcoholic</a>
-                                <ul className="children">
-                                    <li><a href="javaScript:void(0)">Champer's Holiday</a></li>
-                                    <li><a href="javaScript:void(0)">Mulled Wine Tea</a></li>
-                                    <li><a href="javaScript:void(0)"> Rum & Raisin Tea</a></li>
-                                    <li><a href="javaScript:void(0)">Nepal Breakfast Black Tea</a></li>
-                                </ul>
-                            </li>
+                            {
+                                this.props.filterItems && this.props.filterItems.length ?
+                                    this.props.filterItems.map((item, index) => {
+                                        return (
+                                            <li key={index}><a href="#">{item.cat}</a>
+                                                <ul className="children">
+                                                    {
+                                                        item.subcats && item.subcats.length ?
+                                                            item.subcats.map((subcat, index) => {
+                                                                return (
+                                                                    <li key={subcat.id}><a href="javaScript:void(0)" className={this.state.selected === (item.cat+index) ? 'subcat-selected' : ''} onClick={() => this.selectedCat((item.cat+index))}>{subcat.name}</a></li>
+                                                                )
+                                                            })
+                                                            :
+                                                            null
+                                                    }
+
+                                                </ul>
+                                            </li>
+                                        )
+                                    })
+
+                                    :
+                                    null
+                            }
                         </ul>
                     </div>
                 </div>
@@ -134,5 +155,5 @@ class Sidebar extends React.Component {
         )
     }
 
-} 
+}
 export default Sidebar;

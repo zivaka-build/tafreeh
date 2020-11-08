@@ -121,3 +121,43 @@ export function* updateUserPassword(action){
       action && action.callbackError && action.callbackError(e);
     }
 }
+
+//send password reset link to the user
+export function* sendResetLink(action){
+  try {
+      const data = action.payload;
+      const resp = yield call(CallApi.POST, APIS.FORGOT_PASSWORD,data,true);
+      if (resp.status === 200) {
+        // eslint-disable-next-line no-unused-expressions
+        action && action.callbackSuccess && action.callbackSuccess(resp);
+      } else {
+        // eslint-disable-next-line no-unused-expressions
+        action && action.callbackError && action.callbackError(resp);
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-unused-expressions
+      action && action.callbackError && action.callbackError(e);
+    }
+}
+
+//reset password of the user
+export function* resetPassword(action){
+  try {
+      const data = action.payload;
+      const resp = yield call(CallApi.POST, APIS.FORGOT_PASSWORD,data,true);
+      if (resp.status === 200) {
+        // eslint-disable-next-line no-unused-expressions
+        action && action.callbackSuccess && action.callbackSuccess(resp);
+      } else {
+        // eslint-disable-next-line no-unused-expressions
+        action && action.callbackError && action.callbackError(resp);
+      }
+    } catch (e) {
+      backdropVisible(false);
+      // eslint-disable-next-line no-unused-expressions
+      action && action.callbackError && action.callbackError(e);
+    }
+}
+
+
+

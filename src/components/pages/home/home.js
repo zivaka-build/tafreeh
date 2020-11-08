@@ -14,19 +14,6 @@ class HomePage extends React.Component{
     }
     componentDidMount(){
         document.title="Home | Tafreeh";
-        this.props.dispatch({
-            type:SAGA_ACTIONS.LOGIN,
-            payload:{},
-            callbackSuccess:resp=>{
-                let faka=[];
-                for(var i=0;i<10;i++)
-                {
-                    faka.push(resp.data[i])
-                }
-                this.setState({carItems:faka});
-            }
-        },
-        )
     }
     
     render()
@@ -41,31 +28,7 @@ class HomePage extends React.Component{
                 <Carousal 
                     items={this.state.carItems}
                 />
-                {/* <div className="product-details-inner">
-                        <div className="row">
-                            <div className="col-lg-5 col-md-6"> */}
-                {/* <ProductCarousal img={[{
-                    src_original:"assets/images/product-product-1.png"
-                },
-                {
-                    src_original:"assets/images/product-product-details-img1.png"
-                },
-                {
-                    src_original:"assets/images/product-product-1.png"
-                },
-                {
-                    src_original:"assets/images/product-product-details-img1.png"
-                },
-                {
-                    src_original:"assets/images/product-product-1.png"
-                },
-                {
-                    src_original:"assets/images/product-product-details-img1.png"
-                }
-                ]}/> */}
-                {/* </div>
-                </div>
-                </div> */}
+                
                 <PopularCatagories/>
                 <BestSeller
                     products={arr}

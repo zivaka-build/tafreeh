@@ -73,6 +73,10 @@
 	padding: 10px 32px 12px;
 }
 
+.subcat-selected{
+	color: #fff !important;
+    background-color: #62d2a2 !important;
+}
 /*----- Sidebar Category start -----*/
 /*------ pricing filter slider start ------*/
 .price-range-wrap {

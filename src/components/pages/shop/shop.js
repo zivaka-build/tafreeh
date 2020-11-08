@@ -4,8 +4,61 @@ import Sidebar from './sidebar/sidebar';
 import './shop.css';
 import ShopArea from './shopArea/shop.area';
 class Shop extends React.Component {
-
+    constructor(props){
+        super(props);
+        this.state={value:null};
+    }
+    onclickM=()=>{
+        let sidebarFilter=[
+            {
+                cat:"classic",
+                subcats:[
+                    {id:1,name:"classic Summer Black Tea"},
+                    {id:2,name:"Mouling Special Autumn Green Tea"},
+                    {id:3,name:"Margaret's Hope classic Summer Chinary Black Tea"},
+                ]
+            },
+            {
+                cat:"Special",
+                subcats:[
+                    {id:1,name:"Assam Breakfast Black Tea"},
+                    {id:2,name:"Castleton Special Spring Chinary Black Tea"},
+                    {id:3,name:"Mouling Special Autumn Green Tea"},
+                    {id:4,name:"Seeyok Special Summer Muscatel Black Tea"},
+                ]
+            },
+            {
+                cat:"Exotic",
+                subcats:[
+                    {id:1,name:"Mouling Special Autumn Green Tea"},
+                    {id:2,name:"Castleton Exotic Summer Muscatel Black Tea"},
+                    {id:3,name:"Saffron (Kesar) Rose Chai"},
+                    {id:4,name:"Hibiscus Lemongrass Tisane"},
+                ]
+            },
+            {
+                cat:"Organic",
+                subcats:[
+                    {id:1,name:"Risheehat classNameic Summer Black Tea"},
+                    {id:2,name:"Mouling Special Autumn Green Tea"},
+                    {id:3,name:"Selim Hill classNameic Spring Green Tea"},
+                    {id:4,name:"Temi Summer Muscatel Black Tea"},
+                ]
+            },
+            {
+                cat:"Alcoholic",
+                subcats:[
+                    {id:1,name:">Champer's Holiday"},
+                    {id:2,name:"Mulled Wine Tea"},
+                    {id:3,name:" Rum & Raisin Tea"},
+                    {id:4,name:"Nepal Breakfast Black Tea"},
+                ]
+            },
+        ];
+        this.setState({value:sidebarFilter});
+    }
     render() {
+        
         let ar=[
             {
                 name:'Condimentum food',
@@ -66,6 +119,7 @@ class Shop extends React.Component {
         ]
         return (
             <main>
+                <button onClick={this.onclickM}>Load</button>
                 <Breadcrumb
                     page_title="Shop"
                     items={[{ path: '/', name: 'home' }, { name: 'shop' }]}
@@ -75,7 +129,7 @@ class Shop extends React.Component {
                         <div className="row">
                             {/* <!-- sidebar area start --> */}
                             <div className="col-lg-3 order-2">
-                                <Sidebar />
+                                <Sidebar filterItems={this.state.value}/>
                             </div>
                             <div className="col-lg-9 order-1">
                                 <ShopArea products={ar}/>

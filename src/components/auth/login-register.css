@@ -39,3 +39,8 @@
 .login-reg-form-wrap .login-reg-form-meta a {
 	color: #62d2a2;
 }
+
+.f-pass:hover{
+	color: #62d2a2;
+	transition: 0.5s;
+}

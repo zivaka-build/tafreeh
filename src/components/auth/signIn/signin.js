@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { REGEX_CONSTANTS } from '../../../common/constants/regexConstants';
 import { Input } from '../../../common/FormElements/formElements';
 export function SignIn(props) {
@@ -34,7 +35,7 @@ export function SignIn(props) {
                 <button className="button button-block" type="submit" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signInTrigerred?<>Logging In <i className="fa fa-circle-o-notch fa-spin"></i></>:'Log In'}</button>
 
             </form>
-
+            <Link to="forgot_pwd"><p className="text-center mt-2 f-pass">Forgot Password?</p></Link>
         </div>
 
     )

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { ACTIONS } from '../common/config/actions';
 import { STORAGE } from '../common/constants/storageConstants';
+import {store} from '../stores/index'
 export class CallApi {
   static GET(url, params, isAuth) {
     return new Promise((resolve, reject) => {
@@ -8,7 +10,7 @@ export class CallApi {
       if (isAuth) {
         const token = Cookies.get(STORAGE.AUTH_TOKEN);
         headers = {
-          Authorization: `Token ${token}`,
+          Authorization: `bearer ${token}`,
         };
       }
       return axios({
@@ -28,11 +30,12 @@ export class CallApi {
 
   static POST(url, data, isAuth) {
     return new Promise((resolve, reject) => {
-      let headers = {};
+      let headers = {'Content-Type':'application/json'};
       if (isAuth) {
         const token = Cookies.get(STORAGE.AUTH_TOKEN);
         headers = {
-          Authorization: `Token ${token}`,
+          'Content-Type':'application/json',
+          Authorization: `bearer ${token}`,
         };
       }
       return axios({
@@ -56,7 +59,7 @@ export class CallApi {
       if (isAuth) {
         const token = Cookies.get(STORAGE.AUTH_TOKEN);
         headers = {
-          Authorization: `Token ${token}`,
+          Authorization: `bearer ${token}`,
         };
       }
       return axios({
@@ -76,11 +79,11 @@ export class CallApi {
 
   static DELETE(url, data, isAuth) {
     return new Promise((resolve, reject) => {
-      let headers = {};
+      let headers = {'Content-Type':'application/json'};
       if (isAuth) {
         const token = Cookies.get(STORAGE.AUTH_TOKEN);
         headers = {
-          Authorization: `Token ${token}`,
+          Authorization: `bearer ${token}`,
         };
       }
       return axios({
@@ -99,12 +102,3 @@ export class CallApi {
   }
 }
 
-axios.interceptors.request.use(
-  req=>new Promise((resolve,reject)=>{
-    console.log(req)
-    resolve(req);
-},
-(err)=>{
-  console.log(err);
-}
-));

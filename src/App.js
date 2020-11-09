@@ -16,6 +16,7 @@ import requireAuth from './common/hoc/reqAuth';
 import requireNoAuth from './common/hoc/reqNoAuth';
 import Backdrop from './components/loaders/backdrop/backdrop';
 import ForgotPassword from './components/auth/forgotPassword/forgot.pass';
+import ResetPassword from './components/auth/resetPassword/reset.pwd';
 class App extends React.Component {
   render() {
     return (
@@ -44,6 +45,7 @@ class App extends React.Component {
             <Route path="/cart" component={Cart}/>
             <Route path="/login-register" component={UserLoginRegister} />
             <Route path="/forgot_pwd" component={ForgotPassword} />
+            <Route path="/reset_pwd" component={ResetPassword} />
             <Route path="/product_details" component={ProductDetails} />
             <Route path="/about" component={AboutUs} />
             <Route path="/shop" component={Shop} />

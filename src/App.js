@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import Header from './components/header/header';
 import SrollTop from './components/ScrollToTop/scroll.top';
@@ -15,51 +15,51 @@ import Shop from './components/pages/shop/shop';
 import requireAuth from './common/hoc/reqAuth';
 import requireNoAuth from './common/hoc/reqNoAuth';
 import Backdrop from './components/loaders/backdrop/backdrop';
-import ForgotPassword from './components/auth/forgotPassword/forgot.pass';
+import SendPasswordLink from './components/auth/forgotPassword/forgotPassword';
 import ResetPassword from './components/auth/resetPassword/resetPass';
 class App extends React.Component {
   render() {
-    console.log("window",window);
+    console.log("window", window);
     return (
       <div className="App">
-        <Backdrop/>
+        <Backdrop />
         <Router>
-          
+
           <SrollTop />
           <Header />
           {this.props.isAuthenticated && (
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/profile" component={requireAuth(Profile)} />
-            <Route path="/cart" component={Cart}/>
-            <Route path="/product_details" component={ProductDetails} />
-            <Route path="/about" component={AboutUs} />
-            <Route path="/shop" component={Shop} />
-            <Route path="/login-register" component={requireNoAuth(UserLoginRegister)} />
-            <Route path="*" component={()=>{return(<h1>Not found</h1>)}}/>
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/profile" component={requireAuth(Profile)} />
+              <Route path="/cart" component={Cart} />
+              <Route path="/product_details" component={ProductDetails} />
+              <Route path="/about" component={AboutUs} />
+              <Route path="/shop" component={Shop} />
+              <Route path="/login-register" component={requireNoAuth(UserLoginRegister)} />
+              <Route path="*" component={() => { return (<h1>Not found</h1>) }} />
+            </Switch>
           )
-        }
-        {
-          !this.props.isAuthenticated && (
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/cart" component={Cart}/>
-            <Route path="/login-register" component={UserLoginRegister} />
-            <Route path="/forgot_pwd" component={ForgotPassword} />
-            <Route path="/reset_pwd" component={ResetPassword} />
-            <Route path="/product_details" component={ProductDetails} />
-            <Route path="/about" component={AboutUs} />
-            <Route path="/shop" component={Shop} />
-            <Route
-                path="*"
-                component={() => {
-                  return <Redirect to="login-register" />;
-                }}
-              />
-          </Switch>
-          )
-        }
+          }
+          {
+            !this.props.isAuthenticated && (
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route path="/cart" component={Cart} />
+                <Route path="/login-register" component={UserLoginRegister} />
+                <Route path="/forgot_pwd" component={SendPasswordLink} />
+                <Route path="/reset_pwd" component={ResetPassword} />
+                <Route path="/product_details" component={ProductDetails} />
+                <Route path="/about" component={AboutUs} />
+                <Route path="/shop" component={Shop} />
+                <Route
+                  path="*"
+                  component={() => {
+                    return <Redirect to="login-register" />;
+                  }}
+                />
+              </Switch>
+            )
+          }
           <Footer />
         </Router>
       </div>
@@ -67,9 +67,9 @@ class App extends React.Component {
   }
 
 }
-const mapStateToProps=state=>{
-  return{
-    isAuthenticated:state.user && state.user.isAuthenticated?true:false,
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.user && state.user.isAuthenticated ? true : false,
   }
 }
 export default connect(mapStateToProps)(App);

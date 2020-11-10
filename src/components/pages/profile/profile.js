@@ -10,7 +10,6 @@ import AccountDetails from './account.details.tab';
 import ChangePassword from './change.password';
 import OrderTab from './order.tab';
 import "./profile.css";
-import { updateUserPassword } from '../../../sagas/auth.saga';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -71,10 +70,11 @@ class Profile extends React.Component {
                     }
                 },
                 callbackSuccess: resp => {
-                    this.showToaster('success','Successful',resp.data.message);
+                    this.showToaster('success','Successful',"Password updated.");
                     resolve(resp);
                 },
                 callbackError: error => {
+                    this.showToaster('error','Error',error.data.message);
                     reject(error);
                 }
             })

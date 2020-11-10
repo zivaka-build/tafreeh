@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from '../../../common/FormElements/formElements';
 import { useForm } from 'react-hook-form';
 export default function ChangePassword(props) {
-    const { register, errors, handleSubmit } = useForm();
+    const { register, errors, handleSubmit,getValues } = useForm();
 
     return (
         <div className="tab-pane fade" id="change-password" role="tabpanel">
@@ -32,7 +32,7 @@ export default function ChangePassword(props) {
                                     <div className="single-input-item">
                                         <label htmlFor="new-pwd" className="required">
                                             New Password
-                                </label>
+                                        </label>
                                         <Input register={register({
                                             required: { value: true, message: 'This field is required' }
                                         })}
@@ -52,6 +52,8 @@ export default function ChangePassword(props) {
                                         <Input
                                             register={register({
                                                 required: { value: true, message: 'This field is required' }
+                                                ,
+                                                validate: { equalPwd: value => (value !== getValues('newpassword')) ? 'Password doesnot match':undefined }
                                             })}
                                             type="password"
                                             id="confirm_password"

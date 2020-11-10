@@ -36,7 +36,7 @@ export default function ResetPasswordForm(props) {
                                 register={register({
                                     required: { value: true, message: 'This field is required' }
                                     ,
-                                    validate: { equalPwd: value => (value !== getValues('password')) && 'Password doesnot match' }
+                                    validate: { equalPwd: value => (value !== getValues('password')) ? 'Password doesnot match':undefined }
                                 })}
                                 error={errors.confirm_password}
                                 name="confirm_password"

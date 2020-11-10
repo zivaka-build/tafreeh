@@ -16,8 +16,10 @@ import requireAuth from './common/hoc/reqAuth';
 import requireNoAuth from './common/hoc/reqNoAuth';
 import Backdrop from './components/loaders/backdrop/backdrop';
 import ForgotPassword from './components/auth/forgotPassword/forgot.pass';
+import ResetPassword from './components/auth/resetPassword/resetPass';
 class App extends React.Component {
   render() {
+    console.log("window",window);
     return (
       <div className="App">
         <Backdrop/>
@@ -34,6 +36,7 @@ class App extends React.Component {
             <Route path="/about" component={AboutUs} />
             <Route path="/shop" component={Shop} />
             <Route path="/login-register" component={requireNoAuth(UserLoginRegister)} />
+            <Route path="*" component={()=>{return(<h1>Not found</h1>)}}/>
           </Switch>
           )
         }
@@ -44,6 +47,7 @@ class App extends React.Component {
             <Route path="/cart" component={Cart}/>
             <Route path="/login-register" component={UserLoginRegister} />
             <Route path="/forgot_pwd" component={ForgotPassword} />
+            <Route path="/reset_pwd" component={ResetPassword} />
             <Route path="/product_details" component={ProductDetails} />
             <Route path="/about" component={AboutUs} />
             <Route path="/shop" component={Shop} />
@@ -58,10 +62,6 @@ class App extends React.Component {
         }
           <Footer />
         </Router>
-
-
-        {/* <Breadcrumb 
-      items={[{name:"home",path:"index.html"},{name:'about us',path:"about.html"},{name:"sasd"}]}/> */}
       </div>
     );
   }

@@ -53,6 +53,7 @@ export default function Signup(props) {
                         className="input-cred"
                         type="password"
                         autoComplete="off"
+                        passToggle
                         error_class="field-error" />
                 </div>
 

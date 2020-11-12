@@ -27,6 +27,7 @@ export default function ResetPasswordForm(props) {
                                 autoComplete="off"
                                 type="password"
                                 error_class="field-error"
+                                passToggle
                             />
                         </div>
                         <div className="field-wrap">
@@ -46,6 +47,7 @@ export default function ResetPasswordForm(props) {
                                 autoComplete="off"
                                 type="password"
                                 error_class="field-error"
+                                passToggle
                             />
                         </div>
                         <button className="button button-block" type="submit" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signInTrigerred ? <>Submitting... <i className="fa fa-circle-o-notch fa-spin"></i></> : 'Reset Password'}</button>

@@ -119,3 +119,15 @@
 	color: #666666;
 	padding: 20px;
 }
+.toggle-password{
+    right: 10px !important;
+    top: 47px !important;
+    font-size: 25px !important;
+    color: rgb(177 174 174) !important;
+}
+.toggle-password-cp{
+    right: 10px !important;
+    top: 50px !important;
+    font-size: 25px !important;
+    color:rgb(177 174 174) !important;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { REGEX_CONSTANTS } from '../../../common/constants/regexConstants';
 import { Input } from '../../../common/FormElements/formElements';
 export function SignIn(props) {
     const {register,errors,handleSubmit}=useForm();
-    
     return (
         <div id="login">
             <h1 className="cred-title">Welcome Back!</h1>
@@ -30,7 +30,16 @@ export function SignIn(props) {
                     <label className="label-login">
                         Password<span className="req">*</span>
                     </label>
-                    <Input  register={register({required:{value:true,message:'This field is required'}})} error={errors.password} className="input-cred" type="password" name="password" autoComplete="off" error_class="field-error" />
+                    <Input  
+                        register={register({required:{value:true,message:'This field is required'}})} error={errors.password} 
+                        className="input-cred" 
+                        type="password" 
+                        name="password" 
+                        autoComplete="off" 
+                        error_class="field-error" 
+                        passToggle={true}
+                    />
+                    
                 </div>
 
                 <button className="button button-block" type="submit" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signInTrigerred?<>Logging In <i className="fa fa-circle-o-notch fa-spin"></i></>:'Log In'}</button>

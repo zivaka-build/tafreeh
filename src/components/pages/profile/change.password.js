@@ -12,7 +12,7 @@ export default function ChangePassword(props) {
                     <form onSubmit={handleSubmit(props.updatePassword)}>
                         <fieldset>
 
-                            <div className="single-input-item">
+                            <div className="single-input-item" style={{position:'relative'}}>
                                 <label htmlFor="current-pwd" className="required">
                                     Current Password
                         </label>
@@ -25,11 +25,13 @@ export default function ChangePassword(props) {
                                     id="old-pwd"
                                     placeholder="Current Password"
                                     error={errors.current_password}
+                                    passToggle
+                                    toggleClass="toggle-password-cp"
                                 />
                             </div>
                             <div className="row">
                                 <div className="col-lg-6">
-                                    <div className="single-input-item">
+                                    <div className="single-input-item" style={{position:'relative'}}>
                                         <label htmlFor="new-pwd" className="required">
                                             New Password
                                         </label>
@@ -41,11 +43,13 @@ export default function ChangePassword(props) {
                                             id="new_password"
                                             placeholder="New Password"
                                             error={errors.new_password}
+                                            passToggle
+                                            toggleClass="toggle-password"
                                         />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
-                                    <div className="single-input-item">
+                                    <div className="single-input-item" style={{position:'relative'}}>
                                         <label htmlFor="confirm-pwd" className="required">
                                             Confirm Password
                                 </label>
@@ -60,6 +64,8 @@ export default function ChangePassword(props) {
                                             placeholder="Confirm Password"
                                             name="confirm_password"
                                             error={errors.confirm_password}
+                                            passToggle
+                                            toggleClass="toggle-password"
                                         />
                                     </div>
                                 </div>

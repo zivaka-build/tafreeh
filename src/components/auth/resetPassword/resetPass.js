@@ -2,12 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions as toastrActions } from 'react-redux-toastr';
-import { SAGA_ACTIONS } from '../../../common/config/actions';
+import { ACTIONS, SAGA_ACTIONS } from '../../../common/config/actions';
 import ResetPasswordForm from './reset.pwd';
 const qs = require('query-string');
 
 class ResetPassword extends React.Component {
     componentDidMount() {
+        this.props.dispatch({
+            type:ACTIONS.LAYOUT.HIDE_HEADER
+        });
         let t=qs.parse(this.props.history.location.search)
         if(!t.token){
             this.props.history.push("/login-register");
@@ -40,6 +43,11 @@ class ResetPassword extends React.Component {
                 }
             }
 
+        });
+    }
+    componentWillUnmount(){
+        this.props.dispatch({
+            type:ACTIONS.LAYOUT.SHOW_HEADER
         });
     }
     showToaster(type, title, message) {

@@ -23,9 +23,9 @@ ReactDOM.render(
           timeOut={3000}
           newestOnTop={true}
           preventDuplicates
-          position="top-right"
-          transitionIn="bounceInDown"
-          transitionOut="bounceOutUp"
+          position="bottom-left"
+          transitionIn="bounceInUp"
+          transitionOut="bounceOutDown"
           progressBar
           closeOnToastrClick
         />

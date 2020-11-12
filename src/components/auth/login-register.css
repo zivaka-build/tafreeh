@@ -40,7 +40,14 @@
 	color: #62d2a2;
 }
 
+.f-pass{
+	font-size: 20px;
+	transition: 0.5s;
+}
 .f-pass:hover{
 	color: #62d2a2;
 	transition: 0.5s;
+}
+.field-error{
+	color: #4fa882 !important;
 }

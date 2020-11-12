@@ -26,6 +26,7 @@ export default function ResetPasswordForm(props) {
                                 className="input-cred"
                                 autoComplete="off"
                                 type="password"
+                                error_class="field-error"
                             />
                         </div>
                         <div className="field-wrap">
@@ -38,11 +39,13 @@ export default function ResetPasswordForm(props) {
                                     ,
                                     validate: { equalPwd: value => (value !== getValues('password')) ? 'Password doesnot match':undefined }
                                 })}
+                                error_class="field-error"
                                 error={errors.confirm_password}
                                 name="confirm_password"
                                 className="input-cred"
                                 autoComplete="off"
                                 type="password"
+                                error_class="field-error"
                             />
                         </div>
                         <button className="button button-block" type="submit" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signInTrigerred ? <>Submitting... <i className="fa fa-circle-o-notch fa-spin"></i></> : 'Reset Password'}</button>

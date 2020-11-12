@@ -2,11 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions as toastrActions } from 'react-redux-toastr';
 import { bindActionCreators } from 'redux';
-import { SAGA_ACTIONS } from '../../../common/config/actions';
+import { ACTIONS, SAGA_ACTIONS } from '../../../common/config/actions';
 import ForgotPassword from './forgot.pass';
 class SendPasswordLink extends React.Component {
     componentDidMount() {
+        this.props.dispatch({
+            type:ACTIONS.LAYOUT.HIDE_HEADER
+        });
         this.toastr = bindActionCreators(toastrActions, this.props.dispatch);
+    }
+    componentWillUnmount(){
+        this.props.dispatch({
+            type:ACTIONS.LAYOUT.SHOW_HEADER
+        });
     }
     showToaster(type, title, message) {
         this.toastr.add({

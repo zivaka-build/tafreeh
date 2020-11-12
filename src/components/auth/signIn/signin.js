@@ -22,6 +22,7 @@ export function SignIn(props) {
                         name="email" 
                         className="input-cred" 
                         autoComplete="off" 
+                        error_class="field-error"
                     />
                 </div>
 
@@ -29,13 +30,14 @@ export function SignIn(props) {
                     <label className="label-login">
                         Password<span className="req">*</span>
                     </label>
-                    <Input  register={register({required:{value:true,message:'This field is required'}})} error={errors.password} className="input-cred" type="password" name="password" autoComplete="off" />
+                    <Input  register={register({required:{value:true,message:'This field is required'}})} error={errors.password} className="input-cred" type="password" name="password" autoComplete="off" error_class="field-error" />
                 </div>
 
                 <button className="button button-block" type="submit" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signInTrigerred?<>Logging In <i className="fa fa-circle-o-notch fa-spin"></i></>:'Log In'}</button>
 
             </form>
             <Link to="forgot_pwd"><p className="text-center mt-2 f-pass">Forgot Password?</p></Link>
+            <Link to="/"><p class="text-center mt-2 f-pass">Back to Home</p></Link>
         </div>
 
     )

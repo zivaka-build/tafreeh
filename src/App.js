@@ -26,7 +26,12 @@ class App extends React.Component {
         <Router>
 
           <SrollTop />
-          <Header />
+          {
+            this.props.header?
+            <Header />
+            :null
+          }
+          
           {this.props.isAuthenticated && (
             <Switch>
               <Route exact path="/" component={HomePage} />
@@ -70,6 +75,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.user && state.user.isAuthenticated ? true : false,
+    header:state.layout && state.layout.header_visible? true:false,
   }
 }
 export default connect(mapStateToProps)(App);

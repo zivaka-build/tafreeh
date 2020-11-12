@@ -144,7 +144,7 @@ export function* sendResetLink(action){
 export function* resetPassword(action){
   try {
       const data = action.payload;
-      const resp = yield call(CallApi.POST, APIS.FORGOT_PASSWORD,data,true);
+      const resp = yield call(CallApi.POST, APIS.RESET_PASSWORD,data,true);
       if (resp.status === 200) {
         // eslint-disable-next-line no-unused-expressions
         action && action.callbackSuccess && action.callbackSuccess(resp);

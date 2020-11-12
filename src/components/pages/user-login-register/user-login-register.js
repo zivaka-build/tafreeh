@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { SAGA_ACTIONS } from '../../../common/config/actions';
+import { ACTIONS, SAGA_ACTIONS } from '../../../common/config/actions';
 import { SignIn } from '../../auth/signIn/signin';
 import Signup from '../../auth/signup/signup';
 import { bindActionCreators } from 'redux';
@@ -55,12 +55,21 @@ class UserLoginRegister extends React.Component {
           window.$(target).fadeIn(600);
           
         });
+
+        this.props.dispatch({
+          type:ACTIONS.LAYOUT.HIDE_HEADER,
+        });
+  }
+  componentWillUnmount(){
+    this.props.dispatch({
+      type:ACTIONS.LAYOUT.SHOW_HEADER,
+    });
   }
   showToaster(type, title, message) {
     this.toastr.add({
       type,
       title,
-      position: 'top-left',
+      position: 'bottom-left',
       attention: true,
       onAttentionClick: id => {},
       message,

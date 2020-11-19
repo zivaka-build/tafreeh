@@ -60,7 +60,7 @@ export default function Signup(props) {
                 <button type="submit" className="button button-block" style={{ fontSize: '18px', borderRadius: '8px' }}>{props.signUPTrigerred ? <>Signing up <i className="fa fa-circle-o-notch fa-spin"></i></> : 'Get Started'}</button>
 
             </form>
-            <Link to="/"><p class="text-center mt-2 f-pass">Back to Home</p></Link>
+            <Link to="/"><p className="text-center mt-2 f-pass">Back to Home</p></Link>
         </div>
 
     )

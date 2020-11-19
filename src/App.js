@@ -17,7 +17,12 @@ import requireNoAuth from './common/hoc/reqNoAuth';
 import Backdrop from './components/loaders/backdrop/backdrop';
 import SendPasswordLink from './components/auth/forgotPassword/forgotPassword';
 import ResetPassword from './components/auth/resetPassword/resetPass';
+
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
   render() {
     console.log("window", window);
     return (
@@ -27,11 +32,11 @@ class App extends React.Component {
 
           <SrollTop />
           {
-            this.props.header?
-            <Header />
-            :null
+            this.props.header ?
+              <Header />
+              : null
           }
-          
+
           {this.props.isAuthenticated && (
             <Switch>
               <Route exact path="/" component={HomePage} />
@@ -75,7 +80,7 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.user && state.user.isAuthenticated ? true : false,
-    header:state.layout && state.layout.header_visible? true:false,
+    header: state.layout && state.layout.header_visible ? true : false,
   }
 }
 export default connect(mapStateToProps)(App);

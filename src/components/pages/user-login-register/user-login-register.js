@@ -125,7 +125,7 @@ class UserLoginRegister extends React.Component {
     
     render() {
         return (
-            <main className="main-className">
+            <main className="main-className" style={{background:"url('assets/images/tea1.jpg')"}}>
                 <div className="form">
                     <ul className="tab-group">
                         <li className="tab active"><a href="#signup">Sign Up</a></li>

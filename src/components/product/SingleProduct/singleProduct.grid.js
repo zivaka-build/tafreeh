@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 export default function SingleProductGrid(props) {
     let ratedItem=[];
         for(var i=1;i<=props.data.rating;i++){
@@ -17,11 +18,12 @@ export default function SingleProductGrid(props) {
     return (
         <div className="product-item mb-50">
             <div className="product-thumb">
-                <a href="product-details.html">
-                    <img src={props.data.image} alt="" width="60%" /></a>
+                <Link to={`product_details`}>
+                    <img src={props.data.image} alt="" width="60%" />
+                </Link>
                 <div className="quick-view-link">
-                    <a href="#" data-toggle="modal" data-target="#quick_view"> <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
-                    </a>
+                    <Link to={`product_details`} > <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
+                    </Link>
                 </div>
             </div>
             <div className="product-content text-center">
@@ -30,7 +32,7 @@ export default function SingleProductGrid(props) {
                 </div>
                 <div className="product-name">
                     <h4 className="h5">
-                        <a href="product-details.html">{props.data.name}</a>
+                        <Link to={`product_details`}>{props.data.name}</Link>
                     </h4>
                 </div>
                 <div className="price-box">

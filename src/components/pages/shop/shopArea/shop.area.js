@@ -3,16 +3,11 @@ import SingleProductList from '../../../product/SingleProduct/single.product.lis
 import SingleProductGrid from '../../../product/SingleProduct/singleProduct.grid';
 import '../shop.css';
 class ShopArea extends React.Component {
-    componentDidMount() {
-        window.$('.product-view-mode a').on('click', function (e) {
-            e.preventDefault();
-            var shopProductWrap = window.$('.shop-product-wrap');
-            var viewMode = window.$(this).data('target');
-            window.$('.product-view-mode a').removeClass('active');
-            window.$(this).addClass('active');
-            shopProductWrap.removeClass('grid-view list-view').addClass(viewMode);
-        })
+    constructor(props){
+        super(props);
+        this.state={view:'grid'}
     }
+    
     render() {
         return (
             <div className="shop-product-wrapper">
@@ -22,10 +17,10 @@ class ShopArea extends React.Component {
                         <div className="col-xl-5 col-lg-4 col-md-3 order-2 order-md-1">
                             <div className="top-bar-left">
                                 <div className="product-view-mode">
-                                    <a className="active" href="#" data-target="grid-view">
+                                    <a className={`${this.state.view==='grid'?'active':''}`} href="javascript:void(0);" onClick={()=>{this.setState({view:'grid'})}}/*data-target="grid-view"*/>
                                         <i className="fa fa-th"></i>
                                     </a>
-                                    <a href="#" data-target="list-view">
+                                    <a href="javascript:void(0);" className={`${this.state.view!=='grid'?'active':''}`} onClick={()=>{this.setState({view:'list'})}}/*data-target="list-view"*/>
                                         <i className="fa fa-list"></i>
                                     </a>
                                 </div>
@@ -53,7 +48,7 @@ class ShopArea extends React.Component {
                 {/* <!-- shop product top wrap start -->
 
                             <!-- product item list start --> */}
-                <div className="shop-product-wrap grid-view row">
+                <div className={`shop-product-wrap row ${this.state.view==='grid'?'grid-view':'list-view'}`}>
                     {
                         this.props.products && this.props.products.length ?
                             this.props.products.map((product, index) => {

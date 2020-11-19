@@ -61,53 +61,7 @@ class Cart extends React.Component {
                                 </div>
                                 <hr />
                                 {/* <!-- 2nd cart product --> */}
-                                <div class="card p-4">
-                                    <div class="row">
-                                        {/* <!-- cart images div --> */}
-                                        <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center shadow product_img">
-                                            <img src="assets/images/product-product-2.png" class="img-fluid" alt="cart img" />
-                                        </div>
-
-
-
-
-                                        {/* <!-- cart product details --> */}
-                                        <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                                            <div class="row">
-                                                {/* <!-- product name  --> */}
-                                                <div class="col-6 card-title">
-                                                    <h1 class="mb-4 product_name">Green Zara Shirt</h1>
-                                                    <p class="mb-2">SHIRT - Green</p>
-                                                    <p class="mb-2">COLOR: Green</p>
-                                                    <p class="mb-3">SIZE: M</p>
-                                                </div>
-                                                {/* <!-- quantity inc dec --> */}
-                                                <div class="col-6">
-                                                    <ul class="pagination justify-content-end set_quantity">
-                                                        <li class="page-item">
-                                                            <button class="page-link " onclick="decreaseNumber('textbox1','itemval1')"> <i class="fa fa-minus"></i> </button>
-                                                        </li>
-                                                        <li class="page-item"><input type="text" name="" class="page-link" value="0" id="textbox1" />
-                                                        </li>
-                                                        <li class="page-item">
-                                                            <button class="page-link" onclick="increaseNumber('textbox1','itemval1')"> <i class="fa fa-plus"></i></button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            {/* <!-- //remover move and price --> */}
-                                            <div class="row">
-                                                <div class="col-8 d-flex justify-content-between remove_wish">
-                                                    <p><i class="fa fa-trash-alt"></i> REMOVE ITEM</p>
-                                                    <p><i class="fa fa-heart"></i>MOVE TO WISH LIST </p>
-                                                </div>
-                                                <div class="col-4 d-flex justify-content-end price_money">
-                                                    <h3>$<span id="itemval1">0.00 </span> </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             {/* <!-- right side div --> */}
                             <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">

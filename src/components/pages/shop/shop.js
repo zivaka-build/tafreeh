@@ -213,7 +213,7 @@ class Shop extends React.Component {
                                     onChange={this.catagory}
                                 />
                             </div>
-                            <div className="col-lg-9 order-1">
+                            <div className="col-lg-9 order-1 shop-area">
                                 <ShopArea products={this.state.ar}/>
                             </div>
                         </div>

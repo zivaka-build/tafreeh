@@ -71,17 +71,7 @@ class ShopArea extends React.Component {
                     }
 
                 </div>
-                {/* <!-- product item list end -->
 
-                            <!-- start pagination area --> */}
-                <div className="paginatoin-area text-center mt-30">
-                    <ul className="pagination-box"><li><a className="Previous" href="javaScript:void(0)"><i className="ion-ios-arrow-left"></i></a></li>
-                        <li className="active"><a href="javaScript:void(0)">1</a></li>
-                        <li><a href="javaScript:void(0)">2</a></li>
-                        <li><a href="javaScript:void(0)">3</a></li>
-                        <li><a className="Next" href="javaScript:void(0)"><i className="ion-ios-arrow-right"></i></a></li>
-                    </ul></div>
-                {/* <!-- end pagination area --> */}
             </div>
         )
     }

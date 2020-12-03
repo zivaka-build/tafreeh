@@ -128,15 +128,16 @@ class UserLoginRegister extends React.Component {
             <main className="main-className" style={{background:"url('assets/images/tea1.jpg')"}}>
                 <div className="form">
                     <ul className="tab-group">
-                        <li className="tab active"><a href="#signup">Sign Up</a></li>
-                        <li className="tab"><a href="#login">Log In</a></li>
+                        <li className="tab active"><a href="#login">Log In</a></li>
+                        <li className="tab"><a href="#signup">Sign Up</a></li>
                     </ul>
                     <div className="tab-content" id="cred_tab">
+                        <SignIn login={this.login} signInTrigerred={this.state.signInTrigerred}/>
                         <Signup
                           signUPTrigerred={this.state.signUPTrigerred}
                           signup={this.signUp}
                         />
-                        <SignIn login={this.login} signInTrigerred={this.state.signInTrigerred}/>
+                        
                     </div>
                 </div>
             </main>

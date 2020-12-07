@@ -68,7 +68,7 @@ const filter=ar=>{
 const mapStateToProps=state=>{
 
     return {...state,
-    products:state.products.products && state.products.products.length?filter(state.products.products):[]
+    products:state.products.products && state.products.products.length?state.products.products:[]
     };
 }
 export default (connect)(mapStateToProps)(Shop);

@@ -18,10 +18,11 @@ export default function SingleProductList(props) {
     return (
         <div className="product-list-item mb-30">
             <div className="product-thumb">
-                <Link to={`product_details`}>
-                    <img src={props.data.image} alt="" width="60%" /></Link>
+                <Link to={`product_details?pid=${props.data.productID}`}>
+                    <img src={props.data.thumbnail} alt="" width="60%" />
+                </Link>
                 <div className="quick-view-link">
-                    <Link to={`product_details`}><span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
+                    <Link to={`product_details?pid=${props.data.productID}`}><span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
                     </Link>
                 </div>
             </div>
@@ -30,13 +31,15 @@ export default function SingleProductList(props) {
                     {ratedItem}
                 </div>
                 <div className="product-name">
-                    <h4><Link to={`product_details`}>{props.data.name}</Link></h4>
+                    <h4><Link to={`product_details?pid=${props.data.productID}`}>{props.data.pname}</Link></h4>
                 </div>
                 <div className="price-box">
-                    <span className="regular-price">${props.data.regular_price}</span>
-                    <span className="old-price"><del>${props.data.regular_price}</del></span>
+                    <span className="regular-price">${props.data.price}</span>
+                    {props.data.oprice ?
+                        <span className="old-price"><del>${props.data.oprice}</del></span>:null
+                    }
                 </div>
-                <p>{props.data.details}</p>
+                <p>{props.data.desc}</p>
                 <div className="action-link">
                     <a href="#" data-toggle="tooltip" title="Add to cart" className="add-to-cart">add
                                                     to cart</a>

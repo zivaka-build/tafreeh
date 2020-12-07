@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 export default function SingleProductGrid(props) {
+    console.log("pdata",props);
     let ratedItem=[];
         for(var i=1;i<=props.data.rating;i++){
             if(i===1)
@@ -18,11 +19,11 @@ export default function SingleProductGrid(props) {
     return (
         <div className="product-item mb-50">
             <div className="product-thumb">
-                <Link to={`product_details`}>
-                    <img src={props.data.image} alt="" width="60%" />
+                <Link to={`product_details?pid=${props.data.productID}`}>
+                    <img src={props.data.thumbnail} alt="" width="60%" />
                 </Link>
                 <div className="quick-view-link">
-                    <Link to={`product_details`} > <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
+                    <Link to={`product_details?pid=${props.data.productID}`} > <span data-toggle="tooltip" title="Quick view"><i className="ion-ios-eye-outline"></i></span>
                     </Link>
                 </div>
             </div>
@@ -32,12 +33,12 @@ export default function SingleProductGrid(props) {
                 </div>
                 <div className="product-name">
                     <h4 className="h5">
-                        <Link to={`product_details`}>{props.data.name}</Link>
+                        <Link to={`product_details?pid=${props.data.productID}`}>{props.data.pname}</Link>
                     </h4>
                 </div>
                 <div className="price-box">
-                    <span className="regular-price">${props.data.regular_price}</span>
-                    {props.data.old_price?<span className="old-price"><del>{props.data.old_price}</del></span>:null}
+                    <span className="regular-price">${props.data.price}</span>
+                    {props.data.oprice?<span className="old-price"><del>{props.data.oprice}</del></span>:null}
                 </div>
                 <div className="product-action-link">
                     {/* <a href="#" data-toggle="tooltip" title="Wishlist"><i className="ion-android-favorite-outline"></i></a> */}

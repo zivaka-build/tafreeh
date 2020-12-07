@@ -4,7 +4,6 @@ export function ReviewArea(props) {
     return (
         <div class="tab-pane fade" id="tab_three">
             <div action="#" class="review-form">
-                <h5>1 review for <span>Chaz Kangeroo Hoodies</span></h5>
                 <div class="total-reviews">
                     <div className="row">
                         <div className="col-md-6 col-lg-6 col-sm-12 mt-4">

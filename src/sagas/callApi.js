@@ -102,3 +102,13 @@ export class CallApi {
   }
 }
 
+axios.interceptors.response.use(
+  res => res,
+  err => {
+    console.log(err.response.status);
+    if (err.response.status === 404) {
+      throw new Error(`${err.config.url} not found`);
+    }
+    throw err;
+  }
+);

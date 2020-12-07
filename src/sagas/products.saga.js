@@ -42,3 +42,23 @@ export function* getCatagories(action){
         action && action.callbackError && action.callbackError(e);
       }
   }
+
+   // get single product by id
+   export function* getProductById(action){
+    try {
+        const data = action.payload;
+        const resp = yield call(CallApi.GET, APIS.GET_PRODUCT_BY_PRODUCT_ID+data.pid,null,true);
+        if (resp.status === 200) {
+          
+          
+          // eslint-disable-next-line no-unused-expressions
+          action && action.callbackSuccess && action.callbackSuccess(resp);
+        } else {
+          // eslint-disable-next-line no-unused-expressions
+          action && action.callbackError && action.callbackError(resp);
+        }
+      } catch (e) {
+        // eslint-disable-next-line no-unused-expressions
+        action && action.callbackError && action.callbackError(e);
+      }
+  }

@@ -26,16 +26,13 @@ class ProductDescription extends React.Component {
                         }
                     </div>
                     <div className="product-name">
-                        <h4><a href="product-details.html">Condimentum organic Tea</a></h4>
+                        <h4><a href="javascript:void(0)">{this.props.data.pname}</a></h4>
                     </div>
                     <div className="price-box">
-                        <span className="regular-price">$160.00</span>
-                        <span className="old-price"><del>$130.00</del></span>
+                        <span className="regular-price">${this.props.data.price}</span>
+                        <span className="old-price"><del>${this.props.data.oprice}</del></span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                    tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus
-                    quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu,
-                                    suscipit id nulla.</p>
+                    <p>{this.props.data.desc}</p>
                     <div className="action-link mb-20">
                         <a href="#" data-toggle="tooltip" title="Add to cart" className="add-to-cart">add to
                                         cart</a>
@@ -46,13 +43,13 @@ class ProductDescription extends React.Component {
                         <h5>Quantity :</h5>
                         <div className="pro-qty">
                             <span className="dec qtybtn">-</span>
-                            <input type="text" defaultValue="1" />
-                            <span className="inc qtybtn">+</span>
+                            <input type="text" defaultValue={this.props.qty} />
+                            <span className="inc qtybtn" onClick={this.props.increment}>+</span>
                         </div>
                     </div>
                     <div className="availability mb-20">
                         <h5>Availability:</h5>
-                        <span>10 in stock</span>
+                        <span className={!this.props.data.stock?'not-available':''}>{this.props.data.stock?`${this.props.data.stock} in stock`:'Not available.'}</span>
                     </div>
                     <div className="share-icon">
                         <h5>share:</h5>

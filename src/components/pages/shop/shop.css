@@ -483,3 +483,6 @@
 .shop-area::-webkit-scrollbar-thumb:hover {
 	background:  #31996c;
   }
+.not-available{
+	color:#ed0d0d !important;
+}

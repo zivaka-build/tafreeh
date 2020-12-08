@@ -36,3 +36,7 @@ export const STATES={
     {"code": "UP","name": "Uttar Pradesh"},
     {"code": "WB","name": "West Bengal"}]
 }
+export  const CURRENCY={
+    INDIA:{CURRENCY_CODE:'INR',SYMBOL:'₹'},
+}
+export const DEFAULT_CURRENCY=CURRENCY.INDIA;

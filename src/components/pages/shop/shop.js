@@ -14,7 +14,6 @@ class Shop extends React.Component {
         this.props.dispatch({
             type:SAGA_ACTIONS.PRODUCTS.GET_CATAGORIES,
             callbackSuccess:resp=>{
-                console.log(resp.data);
                 this.setState({value:resp.data});
             }
         });

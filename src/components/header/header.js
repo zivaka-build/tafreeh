@@ -68,8 +68,8 @@ class Header extends React.Component {
                                                                 </>
                                                                 :
                                                                 <>
-                                                                    <Link className="dropdown-item" to="login-register"> login</Link>
-                                                                    <Link className="dropdown-item" to="login-register">register</Link>
+                                                                    <Link className="dropdown-item" to="login-register" style={{fontSize:'13px'}}>login/register</Link>
+                                                                    {/* <Link className="dropdown-item" to="login-register">register</Link> */}
                                                                 </>
                                                             }    
                                                         </div>

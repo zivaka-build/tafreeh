@@ -48,7 +48,7 @@ class ProductDetails extends React.Component {
                         <div className="row">
                             <div className="col-lg-5 col-md-6">
                                 <ProductCarousal
-                                    img={this.state.product && this.state.product.image && this.state.product.image.length ? this.state.product.image : []}
+                                    img={this.state.product && this.state.product.productImage && this.state.product.productImage.length ? this.state.product.productImage : []}
                                 />
 
                             </div>

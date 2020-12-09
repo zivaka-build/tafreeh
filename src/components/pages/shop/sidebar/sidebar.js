@@ -1,6 +1,7 @@
 import React from 'react';
 import InputRange from 'react-input-range';
 import "react-input-range/lib/css/index.css";
+import { DEFAULT_CURRENCY } from '../../../../common/constants/states';
 import '../shop.css';
 class Sidebar extends React.Component {
     constructor(props) {
@@ -125,7 +126,7 @@ class Sidebar extends React.Component {
                                     <form action="javaScript:void(0)">
                                         <div className="price-input">
                                             <label htmlFor="amount">Price: </label>
-                                            <input type="text" id="amount" readOnly={true} value={` $${this.state.rv.min} - $${this.state.rv.max}`} /></div>
+                                            <input type="text" id="amount" readOnly={true} value={` ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.min} - ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.max}`} /></div>
                                         <button className="filter-btn">filter</button>
                                     </form>
                                 </div>

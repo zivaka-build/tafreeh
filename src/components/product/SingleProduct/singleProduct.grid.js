@@ -37,8 +37,8 @@ export default function SingleProductGrid(props) {
                     </h4>
                 </div>
                 <div className="price-box">
-                    <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.mrp}`}</span>
-                    {props.data.mrp?<span className="old-price"><del>{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.mrp}`}</del></span>:null}
+                    <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.productPrice}`}</span>
+                    {props.data.mrp && props.data.mrp>props.data.productPrice?<span className="old-price"><del>{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.mrp}`}</del></span>:null}
                 </div>
                 <div className="product-action-link">
                     {/* <a href="#" data-toggle="tooltip" title="Wishlist"><i className="ion-android-favorite-outline"></i></a> */}

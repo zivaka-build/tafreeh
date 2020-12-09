@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
 import "./carousal.css";
 class ProductCarousal extends React.Component {
     componentDidMount() {
@@ -56,15 +57,15 @@ class ProductCarousal extends React.Component {
                         });
 
                     }
+                    else {
+                        window.$(".pro-nav").hide();
+                    }
 
                 }, 1
             )
 
         }
-        else
-        {
-            window.$(".pro-nav").hide();
-        }
+
     }
     render() {
         console.log(this.props);
@@ -76,7 +77,8 @@ class ProductCarousal extends React.Component {
                             this.props.img.map((el, index) => {
                                 return (
                                     <div key={index} className="pro-large-img">
-                                        <img src={el} alt="" width="60%" />
+                                        <Suspense fallback={<ClipLoader size={60} color="#c2c0bf" />}><img src={el} alt="" width="60%" /></Suspense>
+
                                     </div>
                                 )
                             })
@@ -90,7 +92,11 @@ class ProductCarousal extends React.Component {
                         this.props.img && this.props.img.length ?
                             this.props.img.map((el, index) => {
                                 return (
-                                    <div key={index} className="pro-nav-thumb"><img src={el} alt="" /></div>
+                                    <div key={index} className="pro-nav-thumb">
+                                        <Suspense>
+                                            <img src={el} alt="" />
+                                        </Suspense>
+                                    </div>
                                 )
                             })
                             :

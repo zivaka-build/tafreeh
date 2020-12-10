@@ -54,12 +54,20 @@ class Sidebar extends React.Component {
 
     selectedCat = id => {
         if (this.state.selected === id) {
-            this.setState({ selected: null }, () => this.props.onChange(this.state.selected));
+            this.setState({ selected: null }, () => this.props.onCatChange(this.state.selected));
         }
         else {
-            this.setState({ selected: id }, () => this.props.onChange(this.state.selected));
+            this.setState({ selected: id }, () => this.props.onCatChange(this.state.selected));
         }
 
+    }
+    selectedPrice=val=>{
+        this.props.onPriceChange(this.state.rv);
+    }
+
+    resetFilters=()=>{
+        this.setState({ selected: null, rv: { min: 100, max: 200 } });
+        this.props.reset();
     }
     render() {
         return (
@@ -75,9 +83,8 @@ class Sidebar extends React.Component {
                                 this.props.filterItems && this.props.filterItems.length ?
                                     this.props.filterItems.map((item, index) => {
                                         return (
-
                                             item.subcats && item.subcats.length ?
-                                                <li key={item.catagory_id}><a href="#">{item.catagory_name}</a>
+                                                <li key={item.catagory_id}><a href="#">{item.categoryName}</a>
                                                     <ul className="children">
                                                         {
                                                             item.subcats && item.subcats.length ?
@@ -93,7 +100,7 @@ class Sidebar extends React.Component {
                                                     </ul>
                                                 </li>
                                                 :
-                                                <li key={index}><a href="javaScript:void(0)" className={this.state.selected === (item.catagory_id) ? 'subcat-selected' : ''} onClick={() => this.selectedCat((item.catagory_id))}>{item.catagory_name}</a></li>
+                                                <li key={index}><a href="javaScript:void(0)" className={this.state.selected === (item.catagory_id) ? 'subcat-selected' : ''} onClick={() => this.selectedCat((item.catagory_id))}>{item.categoryName}</a></li>
                                             
                                         )
                                     })
@@ -114,20 +121,21 @@ class Sidebar extends React.Component {
                         <div className="sidebar-body">
                             <div className="price-range-wrap">
                                 <InputRange
-                                    maxValue={10000}
+                                    maxValue={1000}
                                     minValue={0}
-                                    step={100}
+                                    step={50}
                                     value={this.state.rv}
                                     onChange={value => this.setState({ rv: value })}
-                                    onChangeComplete={() => console.log("hjghjgjhgfyxffhj", this.state.rv)}
+                                    onChangeComplete={() => this.selectedPrice(this.state.rv)}
                                 />
 
                                 <div className="range-slider">
                                     <form action="javaScript:void(0)">
                                         <div className="price-input">
                                             <label htmlFor="amount">Price: </label>
-                                            <input type="text" id="amount" readOnly={true} value={` ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.min} - ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.max}`} /></div>
-                                        <button className="filter-btn">filter</button>
+                                            <input type="text" id="amount" readOnly={true} value={` ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.min} - ${DEFAULT_CURRENCY.SYMBOL} ${this.state.rv.max}`} />
+                                        </div>
+                                        <button className="filter-btn" onClick={this.resetFilters}>reset</button>
                                     </form>
                                 </div>
                             </div>

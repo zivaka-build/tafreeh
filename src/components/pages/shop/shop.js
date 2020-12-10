@@ -8,7 +8,7 @@ import { SAGA_ACTIONS } from '../../../common/config/actions';
 class Shop extends React.Component {
     constructor(props){
         super(props);
-        this.state={value:null,ar:[]};
+        this.state={value:null,cat:'',min:'',max:'',filterItems:{}};
     }
     componentDidMount(){
         this.props.dispatch({
@@ -22,9 +22,30 @@ class Shop extends React.Component {
             
         });        
     }
-    
+    resetAllProducts=()=>{
+
+        this.props.dispatch({
+            type:SAGA_ACTIONS.PRODUCTS.GET_ALL,}
+        );
+        this.setState({cat:'',min:'',max:''});
+    }
+    getFilteredProducts=()=>{
+        this.props.dispatch({
+            type:SAGA_ACTIONS.PRODUCTS.GET_FILTERED,
+            payload:{
+                min:this.state.min,
+                max:this.state.max,
+                cat:this.state.cat
+            }
+        })
+    }
     catagory=e=>{
         console.log("catagory",e);
+        this.setState({cat:e?e:''},this.getFilteredProducts)
+    }
+    price=e=>{
+        console.log("price",e);
+        this.setState({min:e.min,max:e.max},this.getFilteredProducts)
     }
     render() {
         return (
@@ -41,7 +62,9 @@ class Shop extends React.Component {
                             <div className="col-lg-3 order-2">
                                 <Sidebar 
                                     filterItems={this.state.value}
-                                    onChange={this.catagory}
+                                    onCatChange={this.catagory}
+                                    onPriceChange={this.price}
+                                    reset={()=>this.resetAllProducts()}
                                 />
                             </div>
                             <div className="col-lg-9 order-1 shop-area">
@@ -55,15 +78,7 @@ class Shop extends React.Component {
 
     }
 }
-const filter=ar=>{
-    let a=[];
-    console.log("l",ar.length);
-    for(var i=0;i<ar.length-2;i++){
-        a.push(ar[i]);
-    }
-    console.log(a);
-    return a;
-}
+
 const mapStateToProps=state=>{
 
     return {...state,

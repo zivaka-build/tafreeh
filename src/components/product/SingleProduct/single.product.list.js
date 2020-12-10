@@ -36,7 +36,7 @@ export default function SingleProductList(props) {
                 </div>
                 <div className="price-box">
                     <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.productPrice}`}</span>
-                    {props.data.mrp ?
+                    {props.data.mrp && props.data.mrp>=props.data.productPrice?
                         <span className="old-price"><del>{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.mrp}`}</del></span>:null
                     }
                 </div>

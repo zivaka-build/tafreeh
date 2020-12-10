@@ -10,5 +10,6 @@ export const APIS={
     RESET_PASSWORD:`${API_URL}app/customer/resetpassword/`,
     GET_CATAGORIES:`${API_URL}catagory/getcatagory`,
     GET_PRODUCTS:`${API_URL}products/getproducts`,
+    GET_FILTERED_PRODUCTS:`${API_URL}products/filterproduct`,
     GET_PRODUCT_BY_PRODUCT_ID:`${API_URL}products/getproductbyid/`
 };

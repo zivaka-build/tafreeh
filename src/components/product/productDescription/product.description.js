@@ -38,13 +38,13 @@ class ProductDescription extends React.Component {
                         }
                     </div>
                     <div className="product-name">
-                        <h4><a href="javascript:void(0)">{this.props.data.pname}</a></h4>
+                        <h4><a href="javascript:void(0)">{this.props.data.name}</a></h4>
                     </div>
                     <div className="price-box">
-                        <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${this.props.data.mrp}`}</span>
-                        {this.props.data.oprice ? <span className="old-price"><del>{`${DEFAULT_CURRENCY.INDIA.SYMBOL} ${this.props.data.oprice}`}</del></span> : null}
+                        <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${this.props.data.productPrice}`}</span>
+                        {this.props.data.mrp && this.props.data.mrp>this.props.data.productPrice ? <span className="old-price"><del>{`${DEFAULT_CURRENCY.SYMBOL} ${this.props.data.mrp}`}</del></span> : null}
                     </div>
-                    <p>{this.props.data.desc}</p>
+                    <p>{this.props.data.miniDescription}</p>
                     {
                         this.props.data.stock ?
                             <div className="action-link mb-20">

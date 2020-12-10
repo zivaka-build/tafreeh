@@ -32,15 +32,15 @@ export default function SingleProductList(props) {
                     {ratedItem}
                 </div>
                 <div className="product-name">
-                    <h4><Link to={`product_details?pid=${props.data.productID}`}>{props.data.pname}</Link></h4>
+                    <h4><Link to={`product_details?pid=${props.data.productID}`}>{props.data.name}</Link></h4>
                 </div>
                 <div className="price-box">
                     <span className="regular-price">{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.productPrice}`}</span>
-                    {props.data.mrp && props.data.mrp>=props.data.productPrice?
+                    {props.data.mrp && props.data.mrp>props.data.productPrice?
                         <span className="old-price"><del>{`${DEFAULT_CURRENCY.SYMBOL} ${props.data.mrp}`}</del></span>:null
                     }
                 </div>
-                <p>{props.data.desc}</p>
+                <p>{props.data.miniDescription}</p>
                 <div className="action-link">
                     <a href="#" data-toggle="tooltip" title="Add to cart" className="add-to-cart">add
                                                     to cart</a>
